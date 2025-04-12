@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^133.0.0",
     "chrome-aws-lambda": "^10.1.0",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.3",

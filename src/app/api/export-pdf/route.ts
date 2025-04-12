@@ -1,22 +1,23 @@
-import chromium from "chrome-aws-lambda";
+import chromium from "@sparticuz/chromium";
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer-core";
 
 export async function POST(req: Request) {
   const { html } = await req.json();
 
-  const executablePath = await chromium.executablePath;
+  const isDev = process.env.NODE_ENV === "development";
 
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    executablePath: executablePath || undefined,
-    headless: chromium.headless,
+    executablePath: await chromium.executablePath(),
+    headless: isDev ? true : ("new" as any), // solución segura para producción
   });
 
   const page = await browser.newPage();
 
-  await page.setContent(`
+  await page.setContent(
+    `
     <html>
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -25,7 +26,9 @@ export async function POST(req: Request) {
         ${html}
       </body>
     </html>
-  `, { waitUntil: "networkidle0" });
+  `,
+    { waitUntil: "networkidle0" }
+  );
 
   const pdfBuffer = await page.pdf({
     format: "a4",
