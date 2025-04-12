@@ -117,7 +117,7 @@ return (
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
         {/* Exámenes Disponibles */}
-        <div className="col-span-2 sm:col-span-6 lg:col-span-2">
+        <div className="col-span-4 min-md:col-span-2">
           <h2 className="text-2xl font-semibold text-gray-700 mb-2 flex items-center gap-2">
             <FiPlus /> Exámenes Disponibles
           </h2>
