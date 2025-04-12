@@ -121,7 +121,7 @@ return (
           <h2 className="text-2xl font-semibold text-gray-700 mb-2 flex items-center gap-2">
             <FiPlus /> Exámenes Disponibles
           </h2>
-          <ul className="space-y-3 max-h-[200px] sm:max-h-[300px] lg:max-h-[600px] overflow-auto pr-1">
+          <ul className="space-y-3 max-h-[200px] sm:max-h-[300px] lg:max-h-[600px] overflow-y-auto overflow-x-hidden pr-1">
             {filteredProducts.map((product) => {
               const isSelected = selectedProducts.some(
                 (p) => p.codigo === product.codigo
