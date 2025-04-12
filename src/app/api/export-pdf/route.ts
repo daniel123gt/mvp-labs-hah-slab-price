@@ -1,30 +1,34 @@
-import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 import { NextResponse } from "next/server";
+import puppeteer from "puppeteer-core";
 
 export async function POST(req: Request) {
   const { html } = await req.json();
 
+  const executablePath = await chromium.executablePath;
+
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: executablePath || undefined,
+    headless: chromium.headless,
   });
+
   const page = await browser.newPage();
 
-  // Inyectar CSS de forma dinámica si es necesario
   await page.setContent(`
     <html>
       <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"> <!-- Asegúrate que Tailwind esté cargado -->
-        <!-- Aquí puedes agregar más links a CSS si es necesario -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
       </head>
       <body>
-        ${html} <!-- Contenido HTML generado dinámicamente -->
+        ${html}
       </body>
     </html>
   `, { waitUntil: "networkidle0" });
 
   const pdfBuffer = await page.pdf({
-    format: "A4",
+    format: "a4",
     printBackground: true,
     margin: { top: "20px", bottom: "20px", left: "20px", right: "20px" },
   });
