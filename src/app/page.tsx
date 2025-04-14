@@ -96,6 +96,12 @@ export default function Home() {
 
   const VIATICO_COST = 50;
   const totalFinalCliente = totalCliente + VIATICO_COST;
+  let dateToday = new Date().toLocaleDateString('es-ES', {
+    weekday: 'long',    // lunes, martes, etc.
+    year: 'numeric',    // 2025
+    month: 'long',      // abril
+    day: 'numeric'      // 14
+  });
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -251,6 +257,7 @@ export default function Home() {
                 {/* Segunda tarjeta solo con precio cliente */}
                 <div id="proforma">
                   <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
+                  <p className='pb-4'>Fecha: {dateToday}</p>
                   <div className="bg-white rounded-xl p-6 mb-6">
                     <table className="w-full text-sm">
                       <thead>
@@ -272,15 +279,15 @@ export default function Home() {
                             </tr>
                           );
                         })}
-                        <tr className="font-semibold border-t bg-gray-100">
+                        <tr className="font-semibold border-t">
                           <td colSpan={2}>Subtotal</td>
                           <td>S/ {totalCliente.toFixed(2)}</td>
                         </tr>
-                        <tr className="font-semibold bg-gray-50">
+                        <tr className="font-semibold">
                           <td colSpan={2}>Costo de Domicilio</td>
                           <td>S/ {VIATICO_COST.toFixed(2)}</td>
                         </tr>
-                        <tr className="font-bold bg-blue-100">
+                        <tr className="font-bold">
                           <td colSpan={2}>Precio Total</td>
                           <td>S/ {totalFinalCliente.toFixed(2)}</td>
                         </tr>
