@@ -1,6 +1,9 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react';
 import { FiSearch, FiCheck, FiPlus, FiTrash2 } from "react-icons/fi";
+import Image from 'next/image';
+import syn from '../../public/synlab.jpg'
+import health from '../../public/health.jpeg'
 
 interface Product {
   codigo: string;
@@ -255,7 +258,11 @@ export default function Home() {
                 </div>
 
                 {/* Segunda tarjeta solo con precio cliente */}
-                <div id="proforma">
+                <div id="proforma" className='overflow-hidden'>
+                  <div className='flex justify-end gap-4 opacity-10'>
+                    <Image width={100} src={syn} alt='topimage' className='w-auto'/>
+                    <Image width={150} src={health} alt='topimage' className='object-cover'/>
+                  </div>
                   <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
                   <p className='pb-4'>Fecha: {dateToday}</p>
                   <div className="bg-white rounded-xl p-6 mb-6">
