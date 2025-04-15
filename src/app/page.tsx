@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { FiSearch, FiCheck, FiPlus, FiTrash2 } from "react-icons/fi";
 import Image from 'next/image';
-import {syn, health} from './const'
+import { syn, health } from './const'
 
 interface Product {
   codigo: string;
@@ -148,8 +148,8 @@ export default function Home() {
                       onClick={() => handleAddToSelected(product)}
                       disabled={isSelected}
                       className={`px-3 py-1.5 rounded-full text-sm font-semibold transition ${isSelected
-                          ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                          : "bg-blue-500 text-white hover:bg-blue-600 cursor-pointer"
+                        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                        : "bg-blue-500 text-white hover:bg-blue-600 cursor-pointer"
                         }`}
                     >
                       {isSelected ? <FiCheck /> : <FiPlus />}
@@ -258,11 +258,14 @@ export default function Home() {
 
                 {/* Segunda tarjeta solo con precio cliente */}
                 <div id="proforma" className='overflow-hidden'>
-                  <div className='flex justify-end gap-4 opacity-10'>
-                    <img src={syn} alt="image" width={100}/>
-                    <img src={health} alt="image2" width={150} className='object-cover'/>
+                  <div className='flex justify-between'>
+                    <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
+                    <div className=''>
+                      <img src={syn} alt="image" className='w-[50px] inline-block' />
+                      <img src={health} alt="image2" className='w-[50] ml-4 inline-block' />
+                    </div>
+
                   </div>
-                  <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
                   <p className='pb-4'>Fecha: {dateToday}</p>
                   <div className="bg-white rounded-xl p-6 mb-6">
                     <table className="w-full text-sm">
