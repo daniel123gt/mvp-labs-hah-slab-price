@@ -58,7 +58,7 @@ export default function Home() {
     0
   );
 
-  const RECARGO_TOTAL = 70;
+  const RECARGO_TOTAL = 120;
   const recargoUnitario = selectedProducts.length > 0 ? RECARGO_TOTAL / selectedProducts.length : 0;
 
 
@@ -96,7 +96,7 @@ export default function Home() {
   };
 
 
-  const VIATICO_COST = 50;
+  const VIATICO_COST = 0;
   const totalFinalCliente = totalCliente + VIATICO_COST;
   let dateToday = new Date().toLocaleDateString('es-ES', {
     weekday: 'long',    // lunes, martes, etc.
@@ -288,15 +288,7 @@ export default function Home() {
                             </tr>
                           );
                         })}
-                        <tr className="font-semibold border-t">
-                          <td colSpan={2}>Subtotal</td>
-                          <td>S/ {totalCliente.toFixed(2)}</td>
-                        </tr>
-                        <tr className="font-semibold">
-                          <td colSpan={2}>Costo de Domicilio</td>
-                          <td>S/ {VIATICO_COST.toFixed(2)}</td>
-                        </tr>
-                        <tr className="font-bold">
+                        <tr className="font-bold mt-4">
                           <td colSpan={2}>Precio Total</td>
                           <td>S/ {totalFinalCliente.toFixed(2)}</td>
                         </tr>
