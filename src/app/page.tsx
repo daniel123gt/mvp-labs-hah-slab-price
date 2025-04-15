@@ -260,9 +260,9 @@ export default function Home() {
                 <div id="proforma" className='overflow-hidden'>
                   <div className='flex justify-between'>
                     <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
-                    <div className=''>
-                      <img src={syn} width={50} alt="image" className='inline-block' />
-                      <img src={health} width={50} alt="image2" className=' ml-4 inline-block' />
+                    <div className='mr-10'>
+                      <img src={health} width={50} alt="image2" className='inline-block' />
+                      <img src={syn} width={50} alt="image" className='ml-4 inline-block' />
                     </div>
 
                   </div>
