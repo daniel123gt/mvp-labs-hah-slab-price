@@ -261,8 +261,8 @@ export default function Home() {
                   <div className='flex justify-between'>
                     <h2 className="text-2xl font-bold pb-4">Proforma de exámenes solicitados</h2>
                     <div className=''>
-                      <img src={syn} alt="image" className='w-[50px] inline-block' />
-                      <img src={health} alt="image2" className='w-[50] ml-4 inline-block' />
+                      <img src={syn} width={50} alt="image" className='inline-block' />
+                      <img src={health} width={50} alt="image2" className=' ml-4 inline-block' />
                     </div>
 
                   </div>
