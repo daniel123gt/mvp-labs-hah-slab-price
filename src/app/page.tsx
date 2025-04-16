@@ -49,7 +49,7 @@ export default function Home() {
     );
   };
 
-  // Helpers para precios
+  // Helpers para precios as
   const parsePrice = (precio: string) =>
     parseFloat(precio.replace('S/', '').replace(',', '').trim()) || 0;
 
